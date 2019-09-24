@@ -1,4 +1,3 @@
-  
 'use strict'
 const mutations = require('../mutations')
 const queries = require('../queries')

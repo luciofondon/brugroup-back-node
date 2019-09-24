@@ -1,33 +1,24 @@
 'use strict'
-const clientRest = require('brugroup-client-rest');
+const UserService = require('brugroup-client-rest').UserService
 
-let services, User
+const service = new UserService(process.env.endpoint)
 
 const queries = {
-  getUser: async ({ root, args }) => {
-    
-    /*try {
-      services = await db(config.db)
+  getUser: async (root, args) => {
+    try {
+      return await service.getUser(args.id)
     } catch (e) {
       throw new Error(e)
     }
-    Hotel = services.Hotel
-    return await Hotel.findById(args.id)*/
-    return await clientRest().UserService.getUsers();
-
   },
   getUsers: async () => {
-    /*try {
-      services = await db(config.db)
+    try {
+      return await service.getUsers()
     } catch (e) {
       throw new Error(e)
     }
-    Hotel = services.Hotel
-    return await Hotel.findAll()*/
-    const User =  clientRest().UserService
-    return await new User().getUsers();
   }
-  
+
 }
 
 module.exports = {
