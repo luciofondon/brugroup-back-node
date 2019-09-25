@@ -8,8 +8,7 @@ class BaseService {
     }
   
     async getData(filter) {
-        let url = filter ? this.endpoint + filter : this.endpoint
-        console.log(url)
+        let url = filter ? this.endpoint + '/' + filter : this.endpoint
         const response = await axios.get(url);
         return response.data
     }
@@ -20,12 +19,14 @@ class BaseService {
     }
 
     async removeData(id) {
-        const response = await axios.delete(this.endpoint, data);
+        let url = this.endpoint + '/' + id
+        const response = await axios.delete(url);
         return response.data
     }
 
     async updateData(id, data) {
-        const response = await axios.put(this.endpoint, data);
+        let url = this.endpoint + '/' + id
+        const response = await axios.put(url, data);
         return response.data
     }
 }

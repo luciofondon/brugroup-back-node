@@ -4,14 +4,19 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "lint": "standard"
+    "lint": "standard",
+    "lint:fix": "standard --fix"
   },
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/luciofondon/brugroup-node.git"
+  },
+  "author": "luciofondon <luciofondonterron@gmail.com>",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.19.0"
+    "axios": "0.19.0"
   },
   "devDependencies": {
-    "standard": "^14.3.1"
+    "standard": "14.3.1"
   }
 }

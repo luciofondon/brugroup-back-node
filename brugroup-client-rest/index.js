@@ -2,9 +2,6 @@
 
 const UserService = require('./src/services/user')
 
-module.exports = function (config) {
-  
-  return {
+module.exports =  {
     UserService
-  }
 }

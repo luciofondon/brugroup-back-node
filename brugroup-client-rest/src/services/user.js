@@ -1,8 +1,9 @@
 const BaseService = require('./base')
+const config = require('../../config/config.json')
 
 class UserService extends BaseService{
-    constructor() {
-      super("http://localhost:9090/api/users")
+    constructor(endpoint){
+      super(`${endpoint}${config.endpoint.user}`)
     }
   
     async getUsers() {
@@ -16,33 +17,33 @@ class UserService extends BaseService{
     }
   
     async getUser(userId) {
-      let users = {}
-      try {
-            users = await this.getData(userId)
-      } catch (error) {
-          console.error(error);
-      }
-      return users;
-    }
-  
-    async addUser(user) {
       let user = {}
       try {
-        user = await this.addData(user)
+        user = await this.getData(userId)
       } catch (error) {
           console.error(error);
       }
       return user;
+    }
+
+    async addUser(user) {
+      let userAux = {}
+      try {
+        userAux = await this.addData(user)
+      } catch (error) {
+          console.error(error);
+      }
+      return userAux;
     }
   
     async updateUser(userId, user) {
-      let user = {}
+      let userAux = {}
       try {
-        user = await this.updateData(userId)
+        userAux = await this.updateData(userId, user)
       } catch (error) {
           console.error(error);
       }
-      return user;
+      return userAux;
     }
   
     async removeUser(userId) {
